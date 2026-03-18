@@ -1,0 +1,64 @@
+============================================================
+MSCKF-VIO 分析报告
+生成时间: 2026-03-18 15:35:13
+数据目录: /home/dingxingyu/leetcode/catkin_ws/src/msckf_vio/datasets_output/machine_hall/MH_04_difficult/20260318
+============================================================
+
+【基本信息】
+  总时长:           93.65 s (1.6 min)
+  总帧数:           1874
+  平均频率:         20.0 Hz
+  累积行程:         26988251.60 m
+
+【位置统计】
+  X 范围:           [-294587.622, 14228308.123] m  (跨度: 14522895.745 m)
+  Y 范围:           [-9215999.860, 10561962.089] m  (跨度: 19777961.949 m)
+  Z 范围:           [-19561372.633, -8323796.502] m  (跨度: 11237576.130 m)
+  起点:             (-294587.622, -9215999.860, -8323796.502)
+  终点:             (14228308.123, 10561962.089, -19561372.633)
+  首尾距离:         26988245.533 m
+  首尾漂移率:       100.00%
+
+【姿态统计】 (欧拉角)
+  Roll 范围:        [-179.63°, 179.94°]
+  Pitch 范围:       [-57.91°, 8.65°]
+  Yaw 范围:         [-179.75°, 179.91°]
+
+【速度统计】
+  平均线速度:       288182.031 m/s
+  最大线速度:       288281.316 m/s
+  速度标准差:       74.132 m/s
+
+【特征追踪统计】
+  追踪帧数:         1878
+  候选特征 (均值):  58.2
+  RANSAC后 (均值):  51.3
+  总体通过率:       88.1%
+  最低特征数:       12
+
+【协方差统计】 (位置标准差)
+  σ_x 均值:         2.778650 m
+  σ_y 均值:         2.591947 m
+  σ_z 均值:         2.322561 m
+
+============================================================
+【生成的图表】
+  - covariance_heatmap.png
+  - covariance_orientation.png
+  - covariance_position.png
+  - covariance_velocity.png
+  - orientation_euler.png
+  - orientation_quaternion.png
+  - position_rate.png
+  - position_xyz.png
+  - quaternion_norm.png
+  - tracking_features.png
+  - tracking_histogram.png
+  - tracking_loss.png
+  - tracking_rates.png
+  - trajectory_2d.png
+  - trajectory_3d.png
+  - velocity_angular.png
+  - velocity_linear.png
+  - velocity_overview.png
+============================================================
