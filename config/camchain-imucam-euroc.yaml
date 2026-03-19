@@ -1,36 +1,36 @@
 # The modifications of the output file from Kalibr:
 # 1. For each matrix (e.g. cam0/T_cam_imu), remove the brackets and minus sign for each line. Use one pair of brackets for each matrix.
 # 2. Add the T_imu_body at the end of the calibration file (usually set to identity).
-cam0:
-  T_cam_imu:
+cam0: # 左目相机
+  T_cam_imu: # 从 imu 坐标系到 cam0 坐标系的外参变换矩阵,左上3x3是旋转矩阵，右侧3x1是平移向量,T_cam_imu  →  代码中拆分为：R_imu_cam0 = T_cam_imu 的左上 3×3 的转置  t_cam0_imu = T_cam_imu 的右侧 3×1
     [0.014865542981794,   0.999557249008346,  -0.025774436697440,   0.065222909535531,
     -0.999880929698575,   0.014967213324719,   0.003756188357967,  -0.020706385492719,
      0.004140296794224,   0.025715529947966,   0.999660727177902,  -0.008054602460030,
                      0,                   0,                   0,   1.000000000000000]
-  camera_model: pinhole
-  distortion_coeffs: [-0.28340811, 0.07395907, 0.00019359, 1.76187114e-05]
-  distortion_model: radtan
-  intrinsics: [458.654, 457.296, 367.215, 248.375]
-  resolution: [752, 480]
-  timeshift_cam_imu: 0.0
-cam1:
-  T_cam_imu:
+  camera_model: pinhole # 针孔相机模型
+  distortion_coeffs: [-0.28340811, 0.07395907, 0.00019359, 1.76187114e-05] # 畸变系数 [k1, k2, p1, p2],单位为无量纲,k1<0说明存在明显桶型畸变
+  distortion_model: radtan # 径向-切向 畸变模型
+  intrinsics: [458.654, 457.296, 367.215, 248.375] # 内参参数 [fx, fy, cx, cy],单位为像素pixel
+  resolution: [752, 480] # 图像分辨率 (宽*高) [width, height],单位为像素pixel
+  timeshift_cam_imu: 0.0 # 相机与 IMU 的时间偏移,t_cam = t_imu + timeshift_cam_imu,单位为秒s;为0.0表示imu和相机时间戳已经对齐，无需再进行时间补偿
+cam1: # 右目相机
+  T_cam_imu: # 从 imu 坐标系到 cam1 坐标系的外参变换矩阵
     [0.012555267089103,   0.999598781151433,  -0.025389800891747,  -0.044901980682509,
     -0.999755099723116,   0.013011905181504,   0.017900583825251,  -0.020569771258915,
      0.018223771455443,   0.025158836311552,   0.999517347077547,  -0.008638135126028,
                      0,                   0,                   0,   1.000000000000000]
-  T_cn_cnm1:
+  T_cn_cnm1: # 从 cam0 坐标系到 cam1 坐标系的外参变换矩阵;从平移向量的求模长可以看出两相机基线长度约为0.11m
     [0.999997256477881,   0.002312067192424,   0.000376008102415,  -0.110073808127187, 
     -0.002317135723281,   0.999898048506644,   0.014089835846648,   0.000399121547014,
     -0.000343393120525,  -0.014090668452714,   0.999900662637729,  -0.000853702503357, 
                      0,                   0,                   0,   1.000000000000000]
-  camera_model: pinhole
+  camera_model: pinhole # 针孔相机模型
   distortion_coeffs: [-0.28368365,  0.07451284, -0.00010473, -3.55590700e-05]
   distortion_model: radtan
   intrinsics: [457.587, 456.134, 379.999, 255.238]
   resolution: [752, 480]
   timeshift_cam_imu: 0.0
-T_imu_body:
+T_imu_body: # 从 IMU 坐标系到机体坐标系的外参变换矩阵;此处为单位阵,两者坐标系重合
   [1.0000, 0.0000, 0.0000, 0.0000,
   0.0000, 1.0000, 0.0000, 0.0000,
   0.0000, 0.0000, 1.0000, 0.0000,
