@@ -15,7 +15,17 @@ MH_02_easy
 MH_03_medium
 MH_04_difficult
 MH_05_difficult
-    
+
+python3  /home/dingxingyu/leetcode/catkin_ws/src/msckf_vio//analysis/run_all_analysis.py /home/dingxingyu/leetcode/catkin_ws/src/msckf_vio/datasets_output/vicon_room1/V1_03_difficult/20260320
+
+V1_01_easy
+V1_02_medium
+V1_03_difficult
+
+python3  /home/dingxingyu/leetcode/catkin_ws/src/msckf_vio//analysis/run_all_analysis.py /home/dingxingyu/leetcode/catkin_ws/src/msckf_vio/datasets_output/vicon_room2/V2_03_difficult/20260320
+V2_01_easy
+V2_02_medium
+V2_03_difficult
 """
 
 import sys
