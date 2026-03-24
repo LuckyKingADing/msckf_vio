@@ -550,7 +550,7 @@ void MsckfVio::processModel(const double& time,
   // Compute discrete transition and noise covariance matrix
   Matrix<double, 21, 21> F = Matrix<double, 21, 21>::Zero();
   Matrix<double, 21, 12> G = Matrix<double, 21, 12>::Zero();
-
+      // 对照论文公式看一下
   F.block<3, 3>(0, 0) = -skewSymmetric(gyro);
   F.block<3, 3>(0, 3) = -Matrix3d::Identity();
   F.block<3, 3>(6, 0) = -quaternionToRotation(
