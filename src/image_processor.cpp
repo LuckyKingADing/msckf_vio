@@ -904,13 +904,20 @@ void ImageProcessor::pruneGridFeatures() {
   return;
 }
 
+/* 例如：undistortPoints(
+                      cam0_points, 
+                      cam0_intrinsics, 
+                      cam0_distortion_model,
+                      cam0_distortion_coeffs, 
+                      cam0_points_undistorted,
+                      R_cam0_cam1);*/
 void ImageProcessor::undistortPoints(
     const vector<cv::Point2f>& pts_in,
     const cv::Vec4d& intrinsics,
     const string& distortion_model,
     const cv::Vec4d& distortion_coeffs,
     vector<cv::Point2f>& pts_out,
-    const cv::Matx33d &rectification_matrix,
+    const cv::Matx33d &rectification_matrix, // R_cam0_cam1
     const cv::Vec4d &new_intrinsics) {
 
   if (pts_in.size() == 0) return;
@@ -941,6 +948,11 @@ void ImageProcessor::undistortPoints(
   return;
 }
 
+/* cam1_points = distortPoints(
+                  cam0_points_undistorted, 
+                  cam1_intrinsics,
+                  cam1_distortion_model, 
+                  cam1_distortion_coeffs); */
 vector<cv::Point2f> ImageProcessor::distortPoints(
     const vector<cv::Point2f>& pts_in,
     const cv::Vec4d& intrinsics,
