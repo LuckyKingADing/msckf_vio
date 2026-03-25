@@ -607,6 +607,7 @@ void MsckfVio::processModel(const double& time,
         0, 21, 21, state_server.state_cov.cols()-21) =
       Phi * state_server.state_cov.block(
         0, 21, 21, state_server.state_cov.cols()-21);
+        
     state_server.state_cov.block(
         21, 0, state_server.state_cov.rows()-21, 21) =
       state_server.state_cov.block(
