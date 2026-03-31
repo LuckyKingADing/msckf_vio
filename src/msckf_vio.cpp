@@ -971,7 +971,7 @@ void MsckfVio::measurementUpdate(
 
   if (//delta_x_imu.segment<3>(0).norm() > 0.15 ||
       //delta_x_imu.segment<3>(3).norm() > 0.15 ||
-      delta_x_imu.segment<3>(6).norm() > 0.5 ||
+      delta_x_imu.segment<3>(6).norm() > 0.5 || // 
       //delta_x_imu.segment<3>(9).norm() > 0.5 ||
       delta_x_imu.segment<3>(12).norm() > 1.0) {
     printf("delta velocity: %f\n", delta_x_imu.segment<3>(6).norm());

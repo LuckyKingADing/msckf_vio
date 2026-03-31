@@ -74,12 +74,14 @@ inline Eigen::Vector4d smallAngleQuaternion(
 
   Eigen::Vector3d dq = dtheta / 2.0;
   Eigen::Vector4d q;
-  double dq_square_norm = dq.squaredNorm();
+  double dq_square_norm = dq.squaredNorm(); // “平方范数”，即所有元素平方和
 
-  if (dq_square_norm <= 1) {
+  /** 小角度时用的是“泰勒近似”，直接保证模长为1且实部为正。
+    * 大角度时不能用近似，直接归一化，保证数值稳定        */
+  if (dq_square_norm <= 1) {// 小角度近似成立，构造一个单位四元数，其中实部根据小角度近似计算，向量部分直接使用输入的dtheta的一半
     q.head<3>() = dq;
-    q(3) = std::sqrt(1-dq_square_norm);
-  } else {
+    q(3) = std::sqrt(1-dq_square_norm); // 这里是根据四元数的单位长度性质，计算出实部的值
+  } else { // 在小角度近似不成立，依旧构造一个单位四元数，但实部不再是根据小角度近似计算，而是直接设置为1，并对向量部分进行归一化处理
     q.head<3>() = dq;
     q(3) = 1;
     q = q / std::sqrt(1+dq_square_norm);
